@@ -1,8 +1,13 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 def home(request):
-    return render(request,'index.html')
+    views={}
+    views['about_me'] = aboutme.objects.all()
+    views['services'] = service.objects.all()
+    views['feedback'] = feedback.objects.all()
+    return render(request,'index.html',views)
 
 
 def about(request):
