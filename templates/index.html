@@ -243,30 +243,20 @@
 		            </div>
 		            <div class="row">
 		                <div class="active-testimonial">
+							{% for feed in feedback %}
 		                    <div class="single-testimonial item d-flex flex-row">
 		                        <div class="thumb">
-		                            <img class="img-fluid" src="{% static 'img/elements/user1.png' %}" alt="">
+		                            <img class="img-fluid" src="{{ feed.image.url }}" style="height:60px; width:60px" alt="">
 		                        </div>
 		                        <div class="desc">
 		                            <p>
-		                                Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills, the bigger the payoff you.		     
+										{{ feed.comment }}
 		                            </p>
-		                            <h4>Harriet Maxwell</h4>
-		                            <p>CEO at Google</p>
+		                            <h4>{{ feed.name }}</h4>
+		                            <p>{{ feed.position }}</p>
 		                        </div>
 		                    </div>
-		                    <div class="single-testimonial item d-flex flex-row">
-		                        <div class="thumb">
-		                            <img class="img-fluid" src="{% static 'img/elements/user2.png' %}" alt="">
-		                        </div>
-		                        <div class="desc">
-		                            <p>
-		                                A purpose is the eternal condition for success. Every former smoker can tell you just how hard it is to stop smoking cigarettes. However.
-		                            </p>
-		                            <h4>Carolyn Craig</h4>
-		                            <p>CEO at Facebook</p>
-		                        </div>
-		                    </div>
+							{% endfor %}
 		                </div>
 		            </div>
 		        </div>

@@ -25,3 +25,13 @@ class feedback(models.Model):
 
     def __str__(self):
         return self.name
+
+class contactus(models.Model):
+    mainaddress=models.TextField(max_length=1000)
+    streetaddress=models.TextField(max_length=1000)
+    phonenumber=models.TextField(max_length=20)
+    openinghrs=models.TextField(max_length=1000)
+    email=models.EmailField()
+
+    def __str__(self):
+        return self.email

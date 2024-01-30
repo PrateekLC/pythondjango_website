@@ -11,10 +11,14 @@ def home(request):
 
 
 def about(request):
-    return render(request,'about.html')
+    views={}
+    views['feedback'] = feedback.objects.all()
+    return render(request,'about.html',views)
 
 def services(request):
-    return render(request,'services.html')
+    views = {}
+    views['feedback'] = feedback.objects.all()
+    return render(request,'services.html',views)
 
 def portfolio(request):
     return render(request,'portfolio.html')
@@ -27,4 +31,6 @@ def blog(request):
     return render(request,'blog.html')
 
 def contact(request):
+    views={}
+    views['contactdetails']=contactus.object.all()
     return render(request,'contact.html')
