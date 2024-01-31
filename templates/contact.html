@@ -20,19 +20,21 @@
 			<!-- End banner Area -->				  
 
 			<!-- Start contact-page Area -->
+
 			<section class="contact-page-area section-gap">
 				<div class="container">
 					<div class="row">
-						<div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
-						<div class="col-lg-4 d-flex flex-column address-wrap">
+
+<div style="text-decoration:none; overflow:hidden;max-width:100%;width:1000px;height:500px;"><div id="google-maps-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Smart+Accounting+Pvt.+Ltd,+Kareshwor+Marga,+Kathmandu,+Nepal&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="googl-ehtml" href="https://www.bootstrapskins.com/themes" id="enable-maps-data">premium bootstrap themes</a><style>#google-maps-display .text-marker{}.map-generator{max-width: 100%; max-height: 100%; background: none;</style></div>						<div class="col-lg-4 d-flex flex-column address-wrap">
 							<div class="single-contact-address d-flex flex-row">
 								<div class="icon">
 									<span class="lnr lnr-home"></span>
 								</div>
+{% for con in contactdetails %}
 								<div class="contact-details">
-									<h5>Binghamton, New York</h5>
+									<h5>{{con.mainaddress}}</h5>
 									<p>
-										4343 Hinkle Deegan Lake Road
+										{{con.streetaddress}}
 									</p>
 								</div>
 							</div>
@@ -41,8 +43,8 @@
 									<span class="lnr lnr-phone-handset"></span>
 								</div>
 								<div class="contact-details">
-									<h5>00 (958) 9865 562</h5>
-									<p>Mon to Fri 9am to 6 pm</p>
+									<h5>{{ con.phonenumber }}</h5>
+									<p>{{con.openinghrs}}</p>
 								</div>
 							</div>
 							<div class="single-contact-address d-flex flex-row">
@@ -50,13 +52,16 @@
 									<span class="lnr lnr-envelope"></span>
 								</div>
 								<div class="contact-details">
-									<h5>support@colorlib.com</h5>
+									<h5>{{con.email}}</h5>
 									<p>Send us your query anytime!</p>
 								</div>
+{% endfor %}
 							</div>														
 						</div>
+
 						<div class="col-lg-8">
-							<form class="form-area contact-form text-right" id="myForm" action="mail.php" method="post">
+							<form class="form-area contact-form text-right" method="POST">
+								{% csrf_token %}
 								<div class="row">	
 									<div class="col-lg-6 form-group">
 										<input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
@@ -70,7 +75,7 @@
 									</div>
 									<div class="col-lg-12">
 										<div class="alert-msg" style="text-align: left;"></div>
-										<button class="genric-btn primary" style="float: right;">Send Message</button>											
+										<button type="submit" class="genric-btn primary" style="float: right;">Send Message</button>
 									</div>
 								</div>
 							</form>	

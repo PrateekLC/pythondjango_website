@@ -4,4 +4,7 @@ from .models import *
 admin.site.register(aboutme)
 admin.site.register(service)
 admin.site.register(feedback)
+admin.site.register(contactus)
+admin.site.register(ourpackage)
+admin.site.register(contactform)
 

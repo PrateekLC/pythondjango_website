@@ -7,6 +7,7 @@ def home(request):
     views['about_me'] = aboutme.objects.all()
     views['services'] = service.objects.all()
     views['feedback'] = feedback.objects.all()
+    views['package'] = ourpackage.objects.all()
     return render(request,'index.html',views)
 
 
@@ -32,5 +33,18 @@ def blog(request):
 
 def contact(request):
     views={}
-    views['contactdetails']=contactus.object.all()
-    return render(request,'contact.html')
+    views['contactdetails']=contactus.objects.all()
+    if request.method == "POST":
+        name = request.POST['name']
+        email= request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        contactform.objects.create(
+        name = name,
+        email = email,
+        subject = subject,
+        message = message
+        ).save()
+
+    return render(request,'contact.html',views)
